@@ -7,7 +7,8 @@ if (isset($_POST['submit'])){
 	$jenis=  $_POST ['jenis'];
 	$keadaan=$_POST ['keadaan'];
 	
-echo $nama.", ".$jumlah.",".$jenis.",".$keadaan.".":
+//echo $nama.", ".$jumlah.",".$jenis.",".$keadaan."." value
+	$sql= "inse"
 $_POST = mysqli_connect($koneksi,$sql);
 }
 ?>
