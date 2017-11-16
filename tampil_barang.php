@@ -1,67 +1,42 @@
 <?php
-include "koneksi.php";
-$sql = "SELECT  nama_barang,jumlah_barang,tgl_masuk,keadaan from barang";
 
-$data = mysqli_connect($koneksi,$sql)
+include "koneksi.php";
+
+$sql = "SELECT nama_barang, jumlah_barang, tgl_masuk, keadaan_barang FROM barang";
+
+$data = mysqli_query($koneksi, $sql);
+
+
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
-	<title>inventory</title>
+	<title>Inventory Barang</title>
 </head>
 <body>
-	<label>barang di gudang</label>
+	<label>Barang yang ada di Gudang</label><br>
+	<a href="input_barang.php">Tambah Barang Baru</a>
 	<table border="1px">
 		<tr>
-			<th>
-				nama
-			</th>
-			<th>
-				jumlah
-			</th>
-			<th>
-				tanggal masuk
-			</th>
-			<th>
-				jenis
-			</th>
-			<th>
-				keadaan
-			</th>
+			<th>Nama Barang</th>
+			<th>Jumlah Barang</th>
+			<th>Tanggal Masuk</th>
+			<th>Jenis Barang</th>
+			<th>Keadaan Barang</th>
 		</tr>
+<?php
+	foreach ($data as $barang):
+	?>
 		<tr>
-			<th>
-				susu
-			</th>
-			<th>
-				13
-			</th>
-			<th>
-				13/11/2017
-			</th>
-			<th>
-				beracun
-			</th>
-			<th>
-				bekas
-			</th>
+			<td><?php echo $barang['nama_barang'];?></td>
+			<td><?php echo $barang['jumlah_barang'];?></td>
+			<td><?php echo $barang['tgl_masuk'];?></td>
+			<td></td>
+			<td><?php echo $barang['keadaan_barang'];?></td>
 		</tr>
-<?php foreach ($data as $barang) ?>
-<tr>
-	<td>
-		<?php echo $barang['nama_barang'];?>
-	</td>
-	<td>
-		<?php echo $barang['jumlah_barang'];?>
-	</td>
-	<td>
-		<?php echo $barang['tgl_masuk'];?>
-	</td>
-	<td>
-		<?php echo $barang['keadaan'];?>
-	</td>
-</tr>
-<?php endforeach;?>
+<?php endforeach; ?>
+
 	</table>
 
 </body>
